@@ -1,0 +1,223 @@
+@import './variables.scss';
+@import './font-awesome/light.scss';
+@import './font-awesome/solid.scss';
+@import './font-awesome/regular.scss';
+@import './font-awesome/duotone.scss';
+@import './font-awesome/fontawesome.scss';
+@import url("https://fonts.googleapis.com/css?family=Kanit:300i,400,500,600,700&display=swap");
+
+
+body {
+    font-family: 'Kanit', sans-serif;
+    margin: 0;
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+// @media (min-width: 768px) {
+//     .container {
+//         max-width: 720px;
+//     }
+// }
+// @media (min-width: 576px) {
+//     .container {
+//         max-width: 540px;
+//     }
+// }
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.header {
+    &__container {
+        position: fixed;
+        height: 84px;
+        width: 100%;
+    }
+}
+
+.navbar{
+    &__container {
+        height: 84px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+    }
+    &__logo {
+
+    }
+    &-menu {
+        &__list {
+            display: flex;
+        }
+        &__item {
+            font-weight: 600;
+            color: #fff;
+            padding: 0 16px;
+            transition: all 0.5s;
+            &--active {
+                color: #dc3545;
+            }
+            &:hover {
+                color: #dc3545;
+            }
+        }
+    }
+}
+
+.main {
+    &__container {
+        background-image: url('/images/sagame66-wy.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 650px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    &__content {
+        margin-bottom: 16px;
+        text-align: center;
+    }
+    &__title {
+        color: #fff;
+        font-size: 3rem;
+        font-weight: 600;
+        &--red {
+            color: #dc3545;
+        }
+    }
+    &__subtitle {
+        color: #fff;
+        font-size: 1.85rem;
+        font-weight: 600;
+    }
+}
+
+.about {
+    &__container {
+        display: flex;
+        padding: 64px 0 0 0;
+        position: relative;
+    }
+    &__content {
+        width: 50%;
+    }
+    &__description {
+        color: #808899;
+        margin: 16px 0;
+    }
+    &__title {
+        font-size: 1.85rem;
+        &--red {
+        color: #dc3545;
+        }
+    }
+    &__subtitle {
+        color: #dc3545;
+    }
+    &__image {
+        width: auto;
+        height: 520px;
+        
+    }   
+}
+
+.service {
+    &__background {
+        background-color: #f8f9fb;
+    }
+    &__container {
+        padding: 64px 0;
+    }
+    &__title {
+        text-align: center;
+    }
+    &__subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    &__description {
+        color: #808899;
+    }
+    &__icon {
+        color: #dc3545;
+        font-size: 2.5rem;
+    }
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 32px;
+        column-gap: 32px;
+    }
+    &__content {
+        margin-left: 16px;
+    }
+    &__item {
+        display: flex;
+    }
+}
+
+.portfolio {
+    &__container {
+        padding: 64px 0;
+        background-color: #fff;
+    }
+    &__title {
+        text-align: center;
+    }
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 24px;
+        column-gap: 24px;
+    }
+    &__item {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.Cursor {
+    &--blinking {
+        color: #fff;
+        font-size:1.85rem;
+    }
+}
+
+.button {
+    font-family: 'Kanit', sans-serif;
+    letter-spacing: 0;
+    background-color: #dc3545;
+    color: #fff;
+    line-height: 45px;
+    display: inline-block;
+    padding: 0 25px;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-color: transparent;
+    &:hover {
+        background-color: #000;
+
+    }
+}
