@@ -1,7 +1,8 @@
 const sequelize = require('sequelize')
+const CONFIG = require('../../config')
 
-const sequelizeConnection = new sequelize('sagame66', 'root', 'b15d873e209b5c8b2f7ec7c5dd4059c0926d8e539ed5e610', {
-    host: '165.22.109.7',
+const sequelizeConnection = new sequelize(CONFIG.DB.DATABASE_NAME, CONFIG.DB.USERNAME, CONFIG.DB.PASSWORD, {
+    host: CONFIG.DB.HOST,
     dialect: 'mysql',
     logging: false,
     timezone: '+07:00',
