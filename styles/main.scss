@@ -1,28 +1,28 @@
-@import './variables.scss';
-@import './font-awesome/light.scss';
-@import './font-awesome/solid.scss';
-@import './font-awesome/regular.scss';
-@import './font-awesome/duotone.scss';
-@import './font-awesome/fontawesome.scss';
-@import url("https://fonts.googleapis.com/css?family=Kanit:300i,400,500,600,700&display=swap");
-
+@import "./variables.scss";
+@import "./font-awesome/light.scss";
+@import "./font-awesome/solid.scss";
+@import "./font-awesome/regular.scss";
+@import "./font-awesome/duotone.scss";
+@import "./font-awesome/fontawesome.scss";
+@import url("https://fonts.googleapis.com/css?family=Kanit:300,400,500,600,700&display=swap");
 
 body {
-    font-family: 'Kanit', sans-serif;
-    margin: 0;
+  font-family: "Kanit", sans-serif;
+  margin: 0;
 }
 
 @media (min-width: 992px) {
-    .container {
-        max-width: 960px;
-    }
+  .container {
+    max-width: 960px;
+  }
 }
 
 @media (min-width: 1200px) {
-    .container {
-        max-width: 1140px;
-    }
+  .container {
+    max-width: 1140px;
+  }
 }
+
 // @media (min-width: 768px) {
 //     .container {
 //         max-width: 720px;
@@ -34,190 +34,575 @@ body {
 //     }
 // }
 .container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  @media only screen and (max-width: 414px) {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 .header {
-    &__container {
-        position: fixed;
-        height: 84px;
-        width: 100%;
+  &__container {
+    position: fixed;
+    height: 84px;
+    width: 100%;
+    z-index: 99;
+    box-shadow: 0 2px 5px rgba(16, 16, 16, 0.07);
+    &--active {
+      transition: all 0.3s ease-in-out;
+      background-color: #fff;
     }
+    &--relative {
+      position: relative;
+      background-color: #000;
+    }
+  }
+
 }
 
-.navbar{
-    &__container {
-        height: 84px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        
-    }
-    &__logo {
-
-    }
-    &-menu {
-        &__list {
-            display: flex;
+.navbar {
+  &__container {
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &--active {
+      & .navbar-menu__item {
+        color: #022144;
+        &--active {
+          color: #dc3545;
         }
-        &__item {
-            font-weight: 600;
-            color: #fff;
-            padding: 0 16px;
-            transition: all 0.5s;
-            &--active {
-                color: #dc3545;
-            }
-            &:hover {
-                color: #dc3545;
-            }
+        &:hover {
+          color: #dc3545;
         }
+      }
+      & .navbar-menu__button {
+        color: #111;
+      }
+      & .navbar__logo-light {
+        display: none;
+      }
+      & .navbar__logo-dark {
+        display: block;
+      }
     }
-}
-
-.main {
-    &__container {
-        background-image: url('/images/sagame66-wy.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100%;
-        height: 650px;
+    @media only screen and (max-width: 414px) {
+      padding: 0 16px;
+    }
+  }
+  &__logo {
+    &-light {
+      display: block;
+    }
+    &-dark {
+      display: none;
+    }
+  }
+  &-menu {
+    &-mobile {
+      &__list {
+        background-color: #111;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-    }
-    &__content {
-        margin-bottom: 16px;
-        text-align: center;
-    }
-    &__title {
-        color: #fff;
-        font-size: 3rem;
+      }
+      &__item {
         font-weight: 600;
-        &--red {
-            color: #dc3545;
+        color: #fff;
+        padding: 16px;
+        transition: all 0.5s;
+        &--active {
+          color: #dc3545;
         }
+        &:hover {
+          color: #dc3545;
+        }
+      }
     }
-    &__subtitle {
-        color: #fff;
-        font-size: 1.85rem;
-        font-weight: 600;
+    &__button {
+      display: none;
+      font-size: 1.5rem;
+      color: #fff;
+      @media only screen and (max-width: 414px) {
+        display: block;
+      }
     }
+    &__list {
+      display: flex;
+      @media only screen and (max-width: 414px) {
+        display: none;
+      }
+    }
+    &__item {
+      font-weight: 600;
+      color: #fff;
+      padding: 0 16px;
+      transition: all 0.5s;
+      &--active {
+        color: #dc3545;
+      }
+      &:hover {
+        color: #dc3545;
+      }
+    }
+  }
+}
+
+.main {
+  &__container {
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.5) 100%,
+        rgba(0, 0, 0, 0.5) 100%
+      ),
+      url("/images/sagame66-wy.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 650px;
+    position: relative;
+  }
+  &__animation-background {
+    position: absolute;
+    width: 100%;
+    height: 650px;
+    @media only screen and (max-width: 414px) {
+      display: none;
+    }
+  }
+  &__content {
+    margin-bottom: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    @media only screen and (max-width: 414px) {
+      padding: 0 16px;
+    }
+  }
+  &__title {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 600;
+    &--red {
+      color: #dc3545;
+    }
+  }
+  &__subtitle {
+    color: #fff;
+    font-size: 1.85rem;
+    font-weight: 600;
+  }
+  &__button {
+    margin-top: 32px;
+  }
 }
 
 .about {
-    &__container {
-        display: flex;
-        padding: 64px 0 0 0;
-        position: relative;
+  &__container {
+    display: flex;
+    padding: 64px 0 0 0;
+    position: relative;
+    @media only screen and (max-width: 414px) {
+      padding: 64px 16px;
     }
-    &__content {
-        width: 50%;
+  }
+  &__content {
+    width: 50%;
+    @media only screen and (max-width: 414px) {
+      width: 100%;
     }
-    &__description {
-        color: #808899;
-        margin: 16px 0;
+  }
+  &__description {
+    color: #808899;
+    margin: 16px 0;
+  }
+  &__title {
+    font-size: 1.85rem;
+    &--red {
+      color: #dc3545;
     }
-    &__title {
-        font-size: 1.85rem;
-        &--red {
-        color: #dc3545;
-        }
+  }
+  &__subtitle {
+    color: #dc3545;
+  }
+  &__image {
+    width: auto;
+    height: 520px;
+    @media only screen and (max-width: 414px) {
+      display: none;
     }
-    &__subtitle {
-        color: #dc3545;
+  }
+}
+
+.promotion {
+  &__container {
+    padding: 64px 0;
+    @media only screen and (max-width: 414px) {
+      padding: 64px 16px;
     }
-    &__image {
-        width: auto;
-        height: 520px;
-        
-    }   
+  }
+  &__title {
+    text-align: center;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+  &__item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: baseline;
+    padding-bottom: 16px;
+    &:not(:last-child) {
+      border-bottom: 1px solid #f0f0f0;
+    }
+    @media only screen and (max-width: 414px) {
+      grid-template-columns: 1fr;
+      row-gap: 8px;
+    }
+    &-title {
+      color: #dc3545;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    &-remark {
+      color: #721c24;
+      background-color: #f8d7da;
+      font-size: 0.75rem;
+      border-radius: 4px;
+      border: 1px solid #f5c6cb;
+      padding: 0 4px;
+    }
+  }
+  &__image {
+    width: 100%;
+  }
+  &__content {
+    padding: 0 16px;
+    @media only screen and (max-width: 414px) {
+      padding: 0;
+    }
+  }
 }
 
 .service {
-    &__background {
-        background-color: #f8f9fb;
+  &__background {
+    background-color: #f8f9fb;
+  }
+  &__container {
+    padding: 64px 0;
+    @media only screen and (max-width: 414px) {
+      padding: 64px 16px;
     }
-    &__container {
-        padding: 64px 0;
+  }
+  &__title {
+    text-align: center;
+  }
+  &__subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  &__description {
+    color: #808899;
+  }
+  &__icon {
+    color: #dc3545;
+    font-size: 2.5rem;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 64px;
+    column-gap: 36px;
+    @media only screen and (max-width: 414px) {
+      grid-template-columns: repeat(1, 1fr);
     }
-    &__title {
-        text-align: center;
-    }
-    &__subtitle {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-    }
-    &__description {
-        color: #808899;
-    }
-    &__icon {
-        color: #dc3545;
-        font-size: 2.5rem;
-    }
-    &__list {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        row-gap: 32px;
-        column-gap: 32px;
-    }
-    &__content {
-        margin-left: 16px;
-    }
-    &__item {
-        display: flex;
-    }
+  }
+  &__content {
+    margin-left: 16px;
+  }
+  &__item {
+    display: flex;
+  }
 }
 
 .portfolio {
-    &__container {
-        padding: 64px 0;
-        background-color: #fff;
+  &__container {
+    padding: 64px 0;
+    background-color: #fff;
+    @media only screen and (max-width: 414px) {
+      padding: 64px 16px;
     }
-    &__title {
-        text-align: center;
+  }
+  &__title {
+    text-align: center;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 24px;
+    column-gap: 24px;
+    @media only screen and (max-width: 414px) {
+      grid-template-columns: repeat(1, 1fr);
     }
-    &__list {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        row-gap: 24px;
-        column-gap: 24px;
+  }
+  &__item {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.contact {
+  &__container {
+    padding: 64px 0;
+    background-image: url("/images/sagame66-wy.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+    text-align: center;
+    @media only screen and (max-width: 414px) {
+      padding: 64px 16px;
     }
-    &__item {
-        width: 100%;
-        height: auto;
-    }
+  }
+  &__title {
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  &__subtitle {
+    text-align: center;
+    color: #ddd;
+    margin-bottom: 16px;
+  }
+}
+
+.footer {
+  &__background {
+    background-color: #111;
+  }
+  &__container {
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    align-items: center;
+  }
 }
 
 .Cursor {
-    &--blinking {
-        color: #fff;
-        font-size:1.85rem;
-    }
+  &--blinking {
+    color: #fff;
+    font-size: 1.85rem;
+  }
+}
+
+.ant-back-top-content {
+  background-color: #dc3545;
+  border-radius: 0;
 }
 
 .button {
-    font-family: 'Kanit', sans-serif;
-    letter-spacing: 0;
-    background-color: #dc3545;
+  font-family: "Kanit", sans-serif;
+  letter-spacing: 0;
+  background-color: #dc3545;
+  color: #fff;
+  line-height: 45px;
+  display: inline-block;
+  padding: 0 25px;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-color: transparent;
+  height: auto;
+  &:hover,
+  &:focus {
+    background-color: #000;
     color: #fff;
-    line-height: 45px;
-    display: inline-block;
-    padding: 0 25px;
-    border-radius: 0;
-    font-size: 14px;
-    font-weight: 600;
-    position: relative;
-    overflow: hidden;
-    transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-color: transparent;
-    &:hover {
-        background-color: #000;
+    border-color: #000;
+  }
+  &--block {
+    width: 100%;
+  }
+  &:disbled {
+    opacity: 0.6;
+  }
+}
 
+.register {
+  &__form {
+    background-color: #111;
+    padding: 32px 64px;
+  }
+  &__title {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+}
+
+.login {
+  &__page {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    position: relative;
+  }
+  &__background {
+    width: 100%;
+    height: 100%;
+    @media only screen and (max-width: 414px) {
+      display: none;
     }
+  }
+  &__container {
+    width: 420px;
+    background-color: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    border-top: 4px solid #dc3545;
+    padding: 32px;
+    text-align: center;
+    @media only screen and (max-width: 414px) {
+      padding: 16px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__logo {
+    height: 64px;
+    width: auto;
+    margin-bottom: 24px;
+  }
+  &__title {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  &__button {
+    &--back {
+      color: #fff;
+      font-size: .85rem;
+      text-decoration: underline;
+      &:hover, &:focus, &:active {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.affiliate {
+  &__background {
+    padding: 64px 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    @media only screen and (max-width: 414px) {
+      padding: 16px;
+    }
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    background-color: #af0001;
+    padding: 32px 64px;
+    color: #fff;
+    @media only screen and (max-width: 414px) {
+      padding: 16px;
+    }
+  }
+  &__content {
+    font-size: 1.25rem;
+    font-weight: 300;
+    align-self: center;
+    text-align: center;
+    width: 75%;
+    @media only screen and (max-width: 414px) {
+      width: 100%;
+    }
+    &>div {
+      margin-top: 24px;
+    }
+  }
+  &__strong {
+    color: #efc436;
+  }
+  &__headline {
+    text-decoration: underline;
+  }
+  &__clipboard {
+    margin-top: 64px;
+    align-self: center;
+    font-size: 1.25rem;
+    font-weight: 300;
+    width: 50%;
+    @media only screen and (max-width: 414px) {
+      width: 100%;
+    }
+    & .ant-input-disabled {
+      color: rgba(0, 0, 0, 0.65) !important;
+      cursor: pointer;
+    }
+    & .ant-input-suffix {
+      color: rgba(0, 0, 0, 0.65) !important;
+      cursor: pointer;
+    }
+  }
+  &__title {
+    font-size: 2rem;
+  }
+  &__subtitle {
+    font-size: 1.5rem;
+  }
+  &__image-container {
+    text-align: center;
+    margin-top: 64px;
+  }
+  &__image {
+    width: 50%;
+    @media only screen and (max-width: 414px) {
+      width: 100%;
+    }
+  }
+}
+
+.ant-modal-content {
+  border-radius: 0;
+}
+
+.ant-modal-body,
+.ant-drawer-body {
+  padding: 0 !important;
+}
+
+.ant-form-item-explain {
+  text-align: left;
+}
+
+.ant-drawer-content-wrapper {
+  height: auto !important;
+}
+
+#components-layout-demo-side .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
 }
