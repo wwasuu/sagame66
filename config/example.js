@@ -2,9 +2,9 @@ const config = {
     DB: {
         HOST: '',
         USERNAME: '',
-        PASSWORDL: '',
-        DATABAS_ENAME: '',
+        PASSWORD: '',
+        NAME: '',
     }
 }
 
-export default config
+module.exports = config

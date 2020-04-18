@@ -1,7 +1,7 @@
 const sequelize = require('sequelize')
 const CONFIG = require('../../config')
 
-const sequelizeConnection = new sequelize(CONFIG.DB.DATABASE_NAME, CONFIG.DB.USERNAME, CONFIG.DB.PASSWORD, {
+const sequelizeConnection = new sequelize(CONFIG.DB.NAME, CONFIG.DB.USERNAME, CONFIG.DB.PASSWORD, {
     host: CONFIG.DB.HOST,
     dialect: 'mysql',
     logging: false,

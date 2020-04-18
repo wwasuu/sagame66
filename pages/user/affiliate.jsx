@@ -2,15 +2,18 @@ import { MenuOutlined } from "@ant-design/icons";
 import { BackTop, Drawer, Form, Input, message } from "antd";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { useSelector, useDispatch } from "react-redux";
 import "../../styles/main.scss";
 import httpClientWithAuth from "../../util/httpClientWithAuth";
+import { withRedux } from "../../util/store";
 
 function affiliate() {
+  const auth = useSelector(state => state.auth);
+  const dispatch = useDispatch();
   const [isMenuShown, toggleMenu] = useState(false);
   const [form] = Form.useForm();
-  const [user, setUser] = useState(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -24,7 +27,10 @@ function affiliate() {
         message.error(error.message)
         return
       }
-      setUser(user)
+      dispatch({
+        type: 'AUTH/LOGGED_IN',
+        auth: user
+      })
     } catch (error) {
       console.log(error);
       if (error.response.status === 401) {
@@ -37,6 +43,9 @@ function affiliate() {
   async function logout() {
     try {
       await Cookies.remove("token");
+      dispatch({
+        type: 'AUTH/LOGGED_OUT',
+      })
       toggleMenu(false);
       router.push("/login", `/login`);
     } catch (error) {
@@ -45,9 +54,11 @@ function affiliate() {
   }
 
   function generateLink() {
-    if (!user) return 
-    return `${window.location.origin}/register?af=${btoa(user.mobile_number)}`
+    if (!auth) return 
+    return `${window.location.origin}/register?af=${btoa(auth.mobile_number)}`
   }
+
+  console.log('auth', auth)
 
   return (
     <div>
@@ -58,9 +69,9 @@ function affiliate() {
         visible={isMenuShown}
       >
         {
-          user &&
+          auth &&
           <div className="navbar-menu-mobile__list">
-            <div className="navbar-menu-mobile__item">{user.name}</div>
+            <div className="navbar-menu-mobile__item">{auth.name}</div>
             <div
               onClick={() => {
                 logout();
@@ -192,4 +203,4 @@ function affiliate() {
   );
 }
 
-export default affiliate;
+export default withRedux(affiliate);
